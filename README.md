@@ -28,3 +28,8 @@ Protobuf 21.x 起强依赖 abseil，而发布包 `protobuf-all-21.11.tar.gz` **�
 
 - `make install` 若被链式命令里的 `grep -c`（0 匹配时退出码 1）截断，记得单独补跑。
 - brpc 需要 `PROTOBUF_PROTOC_EXECUTABLE` 指向这个 protoc。
+
+## 更新（2026-11-04）
+
+最终 BE 用本 protoc 生成 gencode，`installed/lib64/libprotobuf.a` 已链接进 `doris_be`，0 错误。
+brpc 的 `PROTOBUF_PROTOC_EXECUTABLE` 指向 `$PREFIX/bin/protoc`；注意产物在 `lib64` 而非 `lib`。
